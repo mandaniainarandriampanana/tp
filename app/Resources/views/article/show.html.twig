@@ -1,0 +1,57 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block blanc %}Article{% endblock %}
+{% block underblanc %}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ article.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ article.title }}</td>
+            </tr>
+            <tr>
+                <th>Leading</th>
+                <td>{{ article.leading }}</td>
+            </tr>
+            <tr>
+                <th>Body</th>
+                <td>{{ article.body }}</td>
+            </tr>
+            <tr>
+                <th>Createdat</th>
+                <td>{% if article.createdAt %}{{ article.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ article.slug }}</td>
+            </tr>
+            <tr>
+                <th>Createdby</th>
+                <td>{{ article.createdBy }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="form">
+        <a class = "btn btn-default" href="{{ path('article_index') }}">Retour au liste</a>
+        <a class = "form-group btn btn-danger user-delete" href="{{ path('article_delete', { 'slug': article.slug }) }}">Supprimer</a>
+    </div>
+{% endblock %}
+{% block other_javascripts %}
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '.user-delete', function (e) {
+                var r = confirm("{{ "Vous voulez supprimmer cet Article?" }}");
+                if (r !== true) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        });
+    </script>
+{% endblock %}
+

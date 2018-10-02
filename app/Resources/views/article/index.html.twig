@@ -1,0 +1,38 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block blanc %}Liste Article{% endblock %}
+{% block underblanc %}
+<div class="panel-body">
+    <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Leading</th>
+                <th>Body</th>
+                <th>Createdat</th>
+                <th>Slug</th>
+                <th>Createdby</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td><a href="{{ path('article_show', { 'slug': article.slug }) }}">{{ article.id }}</a></td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.leading }}</td>
+                <td>{{ article.body }}</td>
+                <td>{% if article.createdAt %}{{ article.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ article.slug }}</td>
+                <td>{{ article.createdBy }}</td>
+                <td>
+                    <a href="{{ path('article_show', { 'slug': article.slug })}}"><i class="fa fa-eye-slash"></i> Voir</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <a class = "btn btn-default" href="{{ path('article_new') }}">Créer nouveau article</a>
+{% endblock %}

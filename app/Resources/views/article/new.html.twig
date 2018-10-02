@@ -1,0 +1,13 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block blanc %}Création Article{% endblock %}
+{% block underblanc %}
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <div class="form">
+            <input type="submit" value="Create" class ="btn btn-success" />
+            <a class = "btn btn-default" href="{{ path('article_index') }}">Retour au liste</a>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,6 @@
+services:
+    service.repository.article:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - ApiBundle\Entity\Article
