@@ -2,7 +2,7 @@
 
 2- lancer la commande: php bin/console cache:clear
 
-3- la collection postman de l'api est qui se trouve au racine du projet
+3- la collection postman des urls dans l'api REST est tpCollection.postman_collection qui se trouve dans la racine du projet
 
 3- l'url d'entré du client est "/" comme le dis le sujet
 
